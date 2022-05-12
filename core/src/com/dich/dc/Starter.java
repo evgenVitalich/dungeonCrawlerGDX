@@ -7,23 +7,27 @@ import com.badlogic.gdx.utils.ScreenUtils;
 
 public class Starter extends ApplicationAdapter {
 	SpriteBatch batch;
-	Texture img;
+	Texture startLocation;
 	private Personaj me;
 
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		//img = new Texture("badlogic.jpg");
+		startLocation = new Texture("first location.jpg");
 
-		me = new Personaj(100, 100);
+		me = new Personaj(80, 50);
 
 	}
 
 	@Override
 	public void render () {
-		ScreenUtils.clear(0, 0, 0, 1);
+		ScreenUtils.clear(0, 0, 0, 0);
+
 		batch.begin();
+		//batch.draw(startLocation, 0, 0);
+		batch.draw(startLocation,0,0,700,500);
 		me.render(batch);
+
 		batch.end();
 	}
 	
@@ -31,5 +35,6 @@ public class Starter extends ApplicationAdapter {
 	public void dispose () {
 		batch.dispose();
 		me.dispose();
+		startLocation.dispose();
 	}
 }

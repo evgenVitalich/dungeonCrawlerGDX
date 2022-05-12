@@ -18,7 +18,7 @@ public class Personaj {
 
     public Personaj(float x, float y) {
 
-        this.texture = new Texture("unnamed.png");
+        this.texture = new Texture("pers3.png");
         pos.set(x, y);
 
     }
