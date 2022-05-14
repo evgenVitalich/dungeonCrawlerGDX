@@ -45,13 +45,16 @@ public class Starter extends ApplicationAdapter {
 		me.move(inputProcessor.dir());
 
 
-
+		Collision();
 
 
 
 		batch.draw(startLocation,0,0,700,500);
 		gnd.render(batch);
 		me.render(batch);
+		/*System.out.print(me.getPlayer_pos());
+		System.out.println(me.getHitbox_pos());
+		*/
 
 		batch.end();
 
@@ -61,9 +64,9 @@ public class Starter extends ApplicationAdapter {
 
 	public void Collision(){
 
-		boolean isIntersects = gnd.hitbox.overlaps(me.hitBox);
-		if(isIntersects){
-			System.out.println("СУКАРАБОТАЙНАХУЙ!!!!!!!!!!!!!!!");
+
+		if(gnd.hitbox.height == me.getHitboxYPos()){
+			System.out.println("ItWorks");
 		}
 
 

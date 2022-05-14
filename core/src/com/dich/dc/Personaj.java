@@ -7,7 +7,8 @@ import com.badlogic.gdx.math.Vector2;
 
 public class Personaj {
 
-    private final Vector2 pos = new Vector2();
+    private final Vector2 player_pos = new Vector2();
+    private final Vector2 hitbox_pos = new Vector2();
 
     private final Texture texture;
 
@@ -29,12 +30,18 @@ public class Personaj {
 
         this.texture = new Texture("pers3.png");
         hitBox.set(x, y, 40, 40);
-        pos.set(x, y);
+
+        player_pos.set(x, y);
+        hitbox_pos.set(x,y);
 
     }
 
     public void render(Batch batch){
-        batch.draw(texture, pos.x, pos.y);
+        batch.draw(texture, player_pos.x, player_pos.y);
+
+
+
+
     }
     public void dispose(){
 
@@ -44,10 +51,28 @@ public class Personaj {
 
     public void move(Vector2 dir){
 
-        pos.add(dir);
+        player_pos.add(dir);
+        hitbox_pos.add(dir);
+
 
 
     }
+    public  Rectangle getHitBox(){
 
+        return hitBox;
 
+    }
+
+    public Vector2 getPlayer_pos() {
+        return player_pos;
+    }
+
+    public Vector2 getHitbox_pos() {
+        return hitbox_pos;
+    }
+    public float getHitboxYPos(){
+
+        return hitbox_pos.y;
+
+    }
 }
