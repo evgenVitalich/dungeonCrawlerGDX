@@ -1,6 +1,6 @@
 package com.dich.dc;
 
-public class s {
+public class s{
 
     //ДАРОВА
     //ДАРОВА х2
