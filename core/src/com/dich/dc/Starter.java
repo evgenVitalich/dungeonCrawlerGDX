@@ -15,20 +15,13 @@ public class Starter extends ApplicationAdapter {
 	SpriteBatch batch;
 	Texture startLocation;
 	private Personaj me;
+	private Ground gnd;
 	private KeyboardAdapter inputProcessor = new KeyboardAdapter();
 
-	World world = new World(new Vector2(0, -10), true);
-
-	BodyDef groundBodyDef = new BodyDef();
-	private World groundBox;
 
 
 	@Override
 	public void create () {
-		groundBodyDef.position.set(new Vector2(0, 10)); // sozdaniye "pola"
-		Body groundBody = world.createBody(groundBodyDef);
-		PolygonShape groundBox = new PolygonShape();
-		groundBody.createFixture(groundBox, 0.0f); // fizicheskaya tesktura pola
 
 		Gdx.input.setInputProcessor(inputProcessor);
 		batch = new SpriteBatch();
@@ -36,6 +29,9 @@ public class Starter extends ApplicationAdapter {
 		startLocation = new Texture("first location.jpg");
 
 		me = new Personaj(80, 50);
+		gnd = new Ground(0,0,700,20);
+
+
 
 	}
 
@@ -45,12 +41,21 @@ public class Starter extends ApplicationAdapter {
 
 		batch.begin();
 		//batch.draw(startLocation, 0, 0);
+		boolean is_col = gnd.hitbox.overlaps(me.hitBox);
+		if(is_col){
+			System.out.println("ПИЗДА!!!!!!!!!!!!!!");
+		}
 		me.move(inputProcessor.dir());
+
+
+
+
 		batch.draw(startLocation,0,0,700,500);
+		gnd.render(batch);
 		me.render(batch);
 
 		batch.end();
-		world.step(1/60f, 6, 2);
+
 
 	}
 	
@@ -59,6 +64,6 @@ public class Starter extends ApplicationAdapter {
 		batch.dispose();
 		me.dispose();
 		startLocation.dispose();
-		groundBox.dispose();
+
 	}
 }
