@@ -41,4 +41,12 @@ public class Ground {
 
     }
 
+
+    public void dispose(){
+
+        test_texture.dispose();
+
+
+    }
+
 }

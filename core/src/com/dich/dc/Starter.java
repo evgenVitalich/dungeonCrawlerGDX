@@ -29,7 +29,7 @@ public class Starter extends ApplicationAdapter {
 		startLocation = new Texture("first location.jpg");
 
 		me = new Personaj(80, 50);
-		gnd = new Ground(0,0,700,20);
+		gnd = new Ground(0,0,700,15);
 
 
 
@@ -41,11 +41,10 @@ public class Starter extends ApplicationAdapter {
 
 		batch.begin();
 		//batch.draw(startLocation, 0, 0);
-		boolean is_col = gnd.hitbox.overlaps(me.hitBox);
-		if(is_col){
-			System.out.println("ПИЗДА!!!!!!!!!!!!!!");
-		}
+
 		me.move(inputProcessor.dir());
+
+
 
 
 
@@ -58,11 +57,23 @@ public class Starter extends ApplicationAdapter {
 
 
 	}
+
+
+	public void Collision(){
+
+		boolean isIntersects = gnd.hitbox.overlaps(me.hitBox);
+		if(isIntersects){
+			System.out.println("СУКАРАБОТАЙНАХУЙ!!!!!!!!!!!!!!!");
+		}
+
+
+	}
 	
 	@Override
 	public void dispose () {
 		batch.dispose();
 		me.dispose();
+		gnd.dispose();
 		startLocation.dispose();
 
 	}
