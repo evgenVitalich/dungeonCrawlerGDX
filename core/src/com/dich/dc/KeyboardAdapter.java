@@ -36,45 +36,29 @@ public class KeyboardAdapter extends InputAdapter {
         return false;
     }
 //Принимает на вход управляемый вектор и T/F по клавишам WASD
-    public Vector2 dir(Vector2 dirinp, boolean LP, boolean RP, boolean UP, boolean DP){
+    public Vector2 dir(){
         Vector2 diropt = new Vector2(0,0);
-        if (LP) {
-            diropt.add(-1,0);
-            dirinp.set(diropt);
-        }
+        if (leftPressed) diropt.add(-1,0);
 
-        if (RP){
-            diropt.add(1,0);
-            dirinp.set(diropt);
-        }
-        if (UP){
-            diropt.add(0,1);
-            dirinp.set(diropt);
-        }
-        if (DP){
-            diropt.add(0,-1);
-            dirinp.set(diropt);
-        }
-        if (LP&UP) {
+        if (rightPressed) diropt.add(1,0);
+        if (upPressed) diropt.add(0,1);
+        if (downPressed) diropt.add(0,-1);
+        /*if (leftPressed&upPressed) {
             diropt.add(-1,1);
             diropt.nor();
-            dirinp.set(diropt);
         }
-        if (RP&UP){
+        if (rightPressed&upPressed){
             diropt.add(1,1);
             diropt.nor();
-            dirinp.set(diropt);
         }
-        if (RP&DP){
+        if (rightPressed&downPressed){
             diropt.add(1,-1);
             diropt.nor();
-            dirinp.set(diropt);
         }
-        if (LP&DP){
+        if (leftPressed&downPressed){
             diropt.add(-1,-1);
             diropt.nor();
-            dirinp.set(diropt);
-        }
-        return dirinp;
+        }*/
+        return diropt;
     }
 }
