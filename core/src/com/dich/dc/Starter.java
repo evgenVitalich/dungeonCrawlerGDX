@@ -32,6 +32,7 @@ public class Starter extends ApplicationAdapter {
 
 		Gdx.input.setInputProcessor(inputProcessor);
 		batch = new SpriteBatch();
+
 		startLocation = new Texture("first location.jpg");
 
 		me = new Personaj(80, 50);
@@ -44,6 +45,7 @@ public class Starter extends ApplicationAdapter {
 
 		batch.begin();
 		//batch.draw(startLocation, 0, 0);
+		me.move(inputProcessor.dir());
 		batch.draw(startLocation,0,0,700,500);
 		me.render(batch);
 
