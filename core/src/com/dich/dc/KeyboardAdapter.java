@@ -14,6 +14,8 @@ public class KeyboardAdapter extends InputAdapter {
     private final Vector2 mousePos = new Vector2();
     private final Vector2 direction = new Vector2();
 
+
+
     @Override
     public boolean keyDown(int keycode) {
         if (keycode == Input.Keys.A) leftPressed = true;

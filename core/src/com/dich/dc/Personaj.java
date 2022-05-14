@@ -12,7 +12,7 @@ public class Personaj {
 
     private int HP;
 
-    private int MoveSpd;
+    private int MoveSpd = 6;
 
 
 
@@ -29,6 +29,13 @@ public class Personaj {
     public void dispose(){
 
         texture.dispose();
+
+    }
+
+    public void move(Vector2 dir){
+
+        pos.add(dir);
+
 
     }
 

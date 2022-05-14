@@ -1,6 +1,7 @@
 package com.dich.dc;
 
 import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
@@ -9,9 +10,11 @@ public class Starter extends ApplicationAdapter {
 	SpriteBatch batch;
 	Texture startLocation;
 	private Personaj me;
+	private KeyboardAdapter inputProcessor = new KeyboardAdapter();
 
 	@Override
 	public void create () {
+		Gdx.input.setInputProcessor(inputProcessor);
 		batch = new SpriteBatch();
 		startLocation = new Texture("first location.jpg");
 
