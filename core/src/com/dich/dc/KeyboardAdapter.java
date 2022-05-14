@@ -43,22 +43,7 @@ public class KeyboardAdapter extends InputAdapter {
         if (rightPressed) diropt.add(1,0);
         if (upPressed) diropt.add(0,1);
         if (downPressed) diropt.add(0,-1);
-        /*if (leftPressed&upPressed) {
-            diropt.add(-1,1);
-            diropt.nor();
-        }
-        if (rightPressed&upPressed){
-            diropt.add(1,1);
-            diropt.nor();
-        }
-        if (rightPressed&downPressed){
-            diropt.add(1,-1);
-            diropt.nor();
-        }
-        if (leftPressed&downPressed){
-            diropt.add(-1,-1);
-            diropt.nor();
-        }*/
+
         return diropt;
     }
 }
