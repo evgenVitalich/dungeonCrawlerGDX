@@ -20,6 +20,7 @@ public class Starter extends ApplicationAdapter {
 	public void create () {
 
 		Gdx.input.setInputProcessor(inputProcessor);
+
 		batch = new SpriteBatch();
 
 		startLocation = new Texture("first location.jpg");
