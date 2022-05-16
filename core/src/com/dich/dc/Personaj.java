@@ -2,17 +2,29 @@ package com.dich.dc;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.math.Rectangle;
+
 import com.badlogic.gdx.math.Vector2;
+
+import java.awt.*;
 
 public class Personaj {
 
+    //16.05.22 сгорел и переписал коллизию без использования библиотек движка,
+    //вруную создав объект "прямоугольник" (Из родного java-класса Rectangle)
+    //в качестве хитбокса.
+    //В краткосрочной перспективе стало работать, но по факту - говнокод (вероятнее всего).
+
+
     private final Vector2 player_pos = new Vector2();
-    private final Vector2 hitbox_pos = new Vector2();
+
+    private final Vector2 hitbox_pos = new Vector2(); //В данный момент бесполезный вектор
+
 
     private final Texture texture;
 
-    public Rectangle hitBox = new Rectangle();
+    public Rectangle hitBox = new Rectangle(); //рожаем хитбокс
+
+
 
 
 
@@ -20,7 +32,7 @@ public class Personaj {
 
     private int HP;
 
-    private int MoveSpd = 6;
+    private int MoveSpd = 1;
 
 
 
@@ -29,16 +41,26 @@ public class Personaj {
 
 
         this.texture = new Texture("pers3.png");
-        hitBox.set(x, y, 40, 40);
+
+        //----------------------
+        int newX = (int) x;
+        //Супер осуждаю приведение типов, но столкнулся с траблом, что
+        //методы класса Rectangle хавают только int. Пришлось юзать приведение типов.
+        int newY = (int) y;
+        //----------------------
+
 
         player_pos.set(x, y);
-        hitbox_pos.set(x,y);
+        hitbox_pos.set(x, y); //В данный момент бесполезный вектор
+
+        hitBox.setBounds(newX,newY,40,40); //размеры взяты исходя из размера текстуры
+
 
     }
 
     public void render(Batch batch){
-        batch.draw(texture, player_pos.x, player_pos.y);
 
+        batch.draw(texture, player_pos.x, player_pos.y);
 
 
 
@@ -47,13 +69,14 @@ public class Personaj {
 
         texture.dispose();
 
+
     }
 
     public void move(Vector2 dir){
 
-        player_pos.add(dir);
-        hitbox_pos.add(dir);
-
+        player_pos.add(dir.scl(MoveSpd));
+        hitBox.x += (dir.x * MoveSpd);
+        hitBox.y += (dir.y * MoveSpd);
 
 
     }
@@ -67,12 +90,19 @@ public class Personaj {
         return player_pos;
     }
 
-    public Vector2 getHitbox_pos() {
-        return hitbox_pos;
-    }
-    public float getHitboxYPos(){
 
-        return hitbox_pos.y;
+    public void getHitBoxCenter(){
+
+        //Метод для отладки, выводит в консоль положение центра хитбокса
+
+        System.out.print(hitBox.getCenterX() + "   ");
+        System.out.println(hitBox.getCenterY());
+
+    }
+
+    public void setMoveSpd(int moveSpd) {
+
+        MoveSpd = moveSpd;
 
     }
 }

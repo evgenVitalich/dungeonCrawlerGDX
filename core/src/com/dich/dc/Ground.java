@@ -2,11 +2,18 @@ package com.dich.dc;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.math.Rectangle;
+
 import com.badlogic.gdx.math.Vector2;
+
+import java.awt.*;
 
 
 public class Ground {
+
+    //16.05.22 сгорел и переписал коллизию без использования библиотек движка,
+    //вруную создав объект "прямоугольник" (Из родного java-класса Rectangle)
+    //В краткосрочной перспективе стало лучше, но по факту - говнокод (вероятнее всего)
+
 
     private float x;
     private float y;
@@ -28,7 +35,10 @@ public class Ground {
 
         test_texture = new Texture("zemlya.jpg");
 
-        hitbox.set(x,y,widht,height);
+        int newX = (int) x;
+        int newY = (int) y;
+
+        hitbox.setBounds(newX,newY,700,15);
 
     }
 

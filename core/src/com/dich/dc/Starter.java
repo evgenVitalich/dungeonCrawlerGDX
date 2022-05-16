@@ -4,11 +4,7 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.Body;
-import com.badlogic.gdx.physics.box2d.BodyDef;
-import com.badlogic.gdx.physics.box2d.PolygonShape;
-import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.ScreenUtils;
 
 public class Starter extends ApplicationAdapter {
@@ -63,11 +59,30 @@ public class Starter extends ApplicationAdapter {
 
 
 	public void Collision(){
+		//------------------------------------------------------------------
+		//Метод призван проверять столкновение между полом и челом (пока что)
+		//------------------------------------------------------------------
 
+		me.getHitBoxCenter(); //Для дебага вывод в консоль координат центра хитбокса
 
-		if(gnd.hitbox.height == me.getHitboxYPos()){
-			System.out.println("ItWorks");
+		if(gnd.hitbox.intersects(me.getHitBox())){
+
+			System.out.println("IT WORKS!!!!!!!!!!");
 		}
+
+	}
+
+	public void IsBorder(Rectangle player_hitbox_pos){
+
+		/*
+		-----------------------------------------------------
+		По хорошему хочется проверять выезд за границы экрана
+		хитбокса игрока, и не допускать этого.
+		Принимает на вход хитбокс чела
+		-----------------------------------------------------
+		 */
+
+
 
 
 	}
