@@ -7,7 +7,7 @@ import com.badlogic.gdx.math.Vector2;
 
 import java.awt.*;
 
-public class Personaj {
+public class Player {
 
     //16.05.22 сгорел и переписал коллизию без использования библиотек движка,
     //вруную создав объект "прямоугольник" (Из родного java-класса Rectangle)
@@ -36,7 +36,7 @@ public class Personaj {
 
 
 
-    public Personaj(float x, float y) {
+    public Player(float x, float y) {
 
 
 

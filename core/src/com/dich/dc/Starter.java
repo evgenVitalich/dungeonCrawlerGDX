@@ -10,7 +10,7 @@ import com.badlogic.gdx.utils.ScreenUtils;
 public class Starter extends ApplicationAdapter {
 	SpriteBatch batch;
 	Texture startLocation;
-	private Personaj me;
+	private Player me;
 	private Ground gnd;
 	private KeyboardAdapter inputProcessor = new KeyboardAdapter();
 
@@ -25,7 +25,7 @@ public class Starter extends ApplicationAdapter {
 
 		startLocation = new Texture("first location.jpg");
 
-		me = new Personaj(80, 50);
+		me = new Player(80, 50);
 		gnd = new Ground(0,0,700,15);
 
 
